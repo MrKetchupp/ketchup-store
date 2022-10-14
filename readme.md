@@ -13,4 +13,4 @@ If someone wants to add or improve something, I invite you to collaborate direct
 
 # License
 
-acme-name released under the [MIT License](https://opensource.org/licenses/MIT)
+ketchup-store released under the [MIT License](https://opensource.org/licenses/MIT)
