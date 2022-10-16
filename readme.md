@@ -1,4 +1,4 @@
-<a href="https://ketchup-store.vercel.app/"><img src="https://i.ibb.co/8MbpjyL/Bran-Ketchup-Store.png" align="left" height="80" width="80" ></a>
+<a href="https://ketchup-store.vercel.app/"><img src="./logos/favicon_ketchup_store.svg" align="left" height="80" width="80" ></a>
 
 # Ketchup store
 
