@@ -1,10 +1,17 @@
 const menuEmail = document.querySelector('.navbar-email');
 const desktopMenu = document.querySelector('.desktop-menu');
+
 const burgerMenu = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
-const shoppingCart = document.querySelector('.navbar-shopping-cart')
-const shoppingMenu = document.querySelector('.my-order-container')
-const cardsContainer = document.querySelector('.cards-container')
+
+const shoppingCart = document.querySelector('.navbar-shopping-cart');
+const shoppingMenu = document.querySelector('.my-order-container');
+
+const cardsContainer = document.querySelector('.cards-container');
+
+const productAdd = document.querySelector('.add-cart');
+const productDetail = document.querySelector('.product-detail');
+
 
 function controlDrop(dropContent) {
     const dropContentHidden = dropContent.classList.contains('hidden')
@@ -125,7 +132,7 @@ productList.push ({
     name:'Bicycle seat bag',
     price: 876,
     image: 'https://m.media-amazon.com/images/I/81k2Gmal+VL._AC_SL1500_.jpg'
-}); 
+});
 
 
 function renderProducts(arr) {
@@ -169,5 +176,8 @@ function renderProducts(arr) {
 }
 
 renderProducts(productList);
+
+productAdd.addEventListener('click', () => {controlDrop(productDetail)});
+
 console.log('Ketchup');
 
