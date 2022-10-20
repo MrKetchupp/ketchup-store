@@ -9,10 +9,10 @@ const shoppingMenu = document.querySelector('.my-order-container');
 
 const cardsContainer = document.querySelector('.cards-container');
 
-const productAdd = document.querySelector('.add-cart');
 const productDetail = document.querySelector('.product-detail');
+const closeButton = document.querySelector('.closeButton');
 
-
+// abrir y cerrar con animación sobre Display:none
 function controlDrop(dropContent) {
     const dropContentHidden = dropContent.classList.contains('hidden')
     if(dropContentHidden) {
@@ -33,57 +33,60 @@ function controlDrop(dropContent) {
 }
 
 menuEmail.addEventListener('click', () => {
-    const shoppingMenuClosed = !shoppingMenu.classList.contains('active');
-    console.log(`El carrito esta cerrado?: ${shoppingMenuClosed}`);
+    shoppingMenu.classList.remove('active');
+    shoppingMenu.classList.add('hidden');
 
-    if(shoppingMenuClosed){
-        controlDrop(desktopMenu);
-    } else {
-        shoppingMenu.classList.remove('active');
-        controlDrop(desktopMenu);
-        shoppingMenu.classList.add('hidden');
-    }
+    productDetail.classList.remove('active');
+    productDetail.classList.add('hidden');
+
+    controlDrop(desktopMenu);
 } );
 
 burgerMenu.addEventListener('click', () => {
-    const shoppingMenuClosed = !shoppingMenu.classList.contains('active');
-    console.log(`El carrito esta cerrado?: ${shoppingMenuClosed}`);
+    shoppingMenu.classList.remove('active');
+    shoppingMenu.classList.add('hidden');
 
-    if(shoppingMenuClosed){
-        controlDrop(mobileMenu);
-    } else {
-        shoppingMenu.classList.remove('active');
-        controlDrop(mobileMenu);
-        shoppingMenu.classList.add('hidden');
-    }
+    productDetail.classList.remove('active');
+    productDetail.classList.add('hidden');
+
+    controlDrop(mobileMenu);
 } );
 
-if (window.matchMedia("(max-width: 640px)").matches) {
-    shoppingCart.addEventListener('click', () => {
-        const mobileMenuClosed = !mobileMenu.classList.contains('active');
-        console.log(`El menu mobile esta cerrado?: ${mobileMenuClosed}`);
+shoppingCart.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    mobileMenu.classList.add('hidden');
 
-        if(mobileMenuClosed){
-            controlDrop(shoppingMenu);
-        } else {
-            mobileMenu.classList.remove('active');
-            mobileMenu.classList.add('hidden');
-            controlDrop(shoppingMenu);
-        }
-    } );
-} else {
-    shoppingCart.addEventListener('click', () => {
-        const desktopMenuClosed = !desktopMenu.classList.contains('active');
-        console.log(`El menu de cuenta esta cerrado?: ${desktopMenuClosed}`);
+    desktopMenu.classList.remove('active');
+    desktopMenu.classList.add('hidden');
 
-        if(desktopMenuClosed){
-            controlDrop(shoppingMenu);
-        } else {
-            desktopMenu.classList.remove('active');
-            desktopMenu.classList.add('hidden');
-            controlDrop(shoppingMenu);
-        }
-    } );
+    productDetail.classList.remove('active');
+    productDetail.classList.add('hidden');
+
+    controlDrop(shoppingMenu);
+} );
+
+//Detalle del producto
+closeButton.addEventListener('click', () => {
+        productDetail.classList.remove('active');
+        productDetail.classList.add('hidden');
+} );
+
+function openProductDetail() {
+    mobileMenu.classList.remove('active');
+    mobileMenu.classList.add('hidden');
+
+    desktopMenu.classList.remove('active');
+    desktopMenu.classList.add('hidden');
+
+    shoppingMenu.classList.remove('active');
+    shoppingMenu.classList.add('hidden');
+
+    productDetail.classList.remove('active');
+    productDetail.classList.add('hidden');
+
+    // abrir aside de productDetail
+    productDetail.classList.remove('hidden');
+    productDetail.classList.add('active');
 }
 
 const productList = [];
@@ -143,6 +146,7 @@ function renderProducts(arr) {
         const productImg = document.createElement('img');
         productImg.setAttribute('src', product.image);
         productImg.classList.add('product-img');
+        productImg.addEventListener('click', openProductDetail);
 
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info')
@@ -177,7 +181,4 @@ function renderProducts(arr) {
 
 renderProducts(productList);
 
-productAdd.addEventListener('click', () => {controlDrop(productDetail)});
-
 console.log('Ketchup');
-
